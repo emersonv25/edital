@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using edital.Data;
+using edital.Services;
+using edital.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,7 +34,8 @@ namespace edital
 
             services.AddControllers();
 
-           // services.AddScoped<IRecadastramentoService, RecadastramentoService>();
+            services.AddScoped<IEstadosService, EstadosService>();
+            services.AddScoped<ICidadesService, CidadesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

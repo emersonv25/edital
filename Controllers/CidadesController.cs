@@ -14,54 +14,54 @@ namespace edital.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EstadosController : ControllerBase
+    public class CidadesController : ControllerBase
     {        
-        private readonly IEstadosService _estadoService;
+        private readonly ICidadesService _cidadeService;
 
-        public EstadosController(IEstadosService estadoService)
+        public CidadesController(ICidadesService cidadeService)
         {
-            _estadoService = estadoService;
+            _cidadeService = cidadeService;
         }
         
-        // GET: api/Estados
+        // GET: api/Cidades
         [HttpGet]
-        public ActionResult<List<Estado>> GetEstados()
+        public ActionResult<List<Cidade>> GetCidades()
         {
-           return _estadoService.GetEstados();
+           return _cidadeService.GetCidades();
         }
 
-        // GET: api/Estados/5
+        // GET: api/Cidades/5
         [HttpGet("{id}")]
-        public ActionResult<Estado> GetEstado(int id)
+        public ActionResult<Cidade> GetCidade(int id)
         {
-           return _estadoService.GetEstado(id);
+           return _cidadeService.GetCidade(id);
         }
 
-        // PUT: api/Estados/5
+        // PUT: api/Cidades/5
         [HttpPut("{id}")]
-       public ActionResult<Estado> PutEstado(int id, Estado estado)
+       public ActionResult<Cidade> PutCidade(int id, Cidade Cidade)
         {
-            if (id != estado.id)
+            if (id != Cidade.id)
             {
                 return BadRequest();
             }
 
-            bool resp  = _estadoService.AtualizaEstado(estado);
+            bool resp  = _cidadeService.AtualizaCidade(Cidade);
             if(!resp)
             {                            
                 return NotFound();
             }
 
-            estado = _estadoService.GetEstado(id);
+            Cidade = _cidadeService.GetCidade(id);
 
-            return estado;
+            return Cidade;
         }
 
-        // POST: api/Estados
+        // POST: api/Cidades
        [HttpPost]
-        public ActionResult<string> PostEstado(Estado novoEstado)
+        public ActionResult<string> PostCidade(Cidade novoCidade)
         {
-            bool resp = _estadoService.CadastrarEstado(novoEstado);
+            bool resp = _cidadeService.CadastrarCidade(novoCidade);
             if(resp){
                 return "Solicitação executada com sucesso!";
             }
@@ -70,9 +70,9 @@ namespace edital.Controllers
             }           
         }
 
-      /*  // DELETE: api/Estados/5
+      /*  // DELETE: api/Cidades/5
        [HttpDelete("{id}")]
-        public ActionResult<Estado> DeletePaciente(int id)
+        public ActionResult<Cidade> DeletePaciente(int id)
         {
             
         }*/
