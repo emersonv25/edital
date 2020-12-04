@@ -13,11 +13,6 @@ namespace edital.Model
         {
             this.nome = nome;
         }
-        public Cidade(string nome, int estadoid)
-        {
-            this.nome = nome;
-            this.estadoid = estadoid;
-        }
 
         public Cidade(string nome, Estado estado)
         {
