@@ -19,27 +19,6 @@ namespace edital.Migrations
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("edital.Model.Anexo", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<byte[]>("arquivo")
-                        .HasColumnType("bytea");
-
-                    b.Property<string>("contentype")
-                        .HasColumnType("text");
-
-                    b.Property<string>("nome")
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
-
-                    b.ToTable("anexo");
-                });
-
             modelBuilder.Entity("edital.Model.Cidade", b =>
                 {
                     b.Property<int>("id")
@@ -47,11 +26,10 @@ namespace edital.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("estadoid")
+                    b.Property<int?>("estadoid")
                         .HasColumnType("integer");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -69,7 +47,6 @@ namespace edital.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("celular")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("email")
@@ -100,7 +77,6 @@ namespace edital.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("vigencia")
@@ -119,25 +95,21 @@ namespace edital.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("bairro")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("cep")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("cidadeid")
+                    b.Property<int?>("cidadeid")
                         .HasColumnType("integer");
 
                     b.Property<string>("complemento")
                         .HasColumnType("text");
 
                     b.Property<string>("logradouro")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("numero")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -158,11 +130,9 @@ namespace edital.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("uf")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -187,13 +157,13 @@ namespace edital.Migrations
                     b.Property<string>("objetivos")
                         .HasColumnType("text");
 
-                    b.Property<int>("pessoajuridicacnpj")
+                    b.Property<int?>("pessoajuridicacnpj")
                         .HasColumnType("integer");
 
                     b.Property<string>("publicoalvo")
                         .HasColumnType("text");
 
-                    b.Property<int>("segmentoid")
+                    b.Property<int?>("segmentoid")
                         .HasColumnType("integer");
 
                     b.HasKey("pessoajuridica_id", "segmento_id");
@@ -212,17 +182,16 @@ namespace edital.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("contatoid")
+                    b.Property<int?>("contatoid")
                         .HasColumnType("integer");
 
-                    b.Property<int>("enderecoid")
+                    b.Property<int?>("enderecoid")
                         .HasColumnType("integer");
 
                     b.Property<string>("razaosocial")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("representanteid")
+                    b.Property<int?>("representanteid")
                         .HasColumnType("integer");
 
                     b.HasKey("cnpj");
@@ -243,18 +212,16 @@ namespace edital.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("contatoid")
+                    b.Property<int?>("contatoid")
                         .HasColumnType("integer");
 
                     b.Property<string>("cpf")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("enderecoid")
+                    b.Property<int?>("enderecoid")
                         .HasColumnType("integer");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -276,11 +243,10 @@ namespace edital.Migrations
                     b.Property<string>("descricao")
                         .HasColumnType("text");
 
-                    b.Property<int>("editalid")
+                    b.Property<int?>("editalid")
                         .HasColumnType("integer");
 
                     b.Property<string>("segmento")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -294,78 +260,58 @@ namespace edital.Migrations
                 {
                     b.HasOne("edital.Model.Estado", "estado")
                         .WithMany()
-                        .HasForeignKey("estadoid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("estadoid");
                 });
 
             modelBuilder.Entity("edital.Model.Endereco", b =>
                 {
                     b.HasOne("edital.Model.Cidade", "cidade")
                         .WithMany("enderecos")
-                        .HasForeignKey("cidadeid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("cidadeid");
                 });
 
             modelBuilder.Entity("edital.Model.Inscricao", b =>
                 {
                     b.HasOne("edital.Model.PessoaJuridica", "pessoajuridica")
                         .WithMany()
-                        .HasForeignKey("pessoajuridicacnpj")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("pessoajuridicacnpj");
 
                     b.HasOne("edital.Model.Segmento", "segmento")
                         .WithMany("inscricoes")
-                        .HasForeignKey("segmentoid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("segmentoid");
                 });
 
             modelBuilder.Entity("edital.Model.PessoaJuridica", b =>
                 {
                     b.HasOne("edital.Model.Contato", "contato")
                         .WithMany()
-                        .HasForeignKey("contatoid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("contatoid");
 
                     b.HasOne("edital.Model.Endereco", "endereco")
                         .WithMany()
-                        .HasForeignKey("enderecoid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("enderecoid");
 
                     b.HasOne("edital.Model.Representante", "representante")
                         .WithMany()
-                        .HasForeignKey("representanteid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("representanteid");
                 });
 
             modelBuilder.Entity("edital.Model.Representante", b =>
                 {
                     b.HasOne("edital.Model.Contato", "contato")
                         .WithMany()
-                        .HasForeignKey("contatoid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("contatoid");
 
                     b.HasOne("edital.Model.Endereco", "endereco")
                         .WithMany()
-                        .HasForeignKey("enderecoid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("enderecoid");
                 });
 
             modelBuilder.Entity("edital.Model.Segmento", b =>
                 {
                     b.HasOne("edital.Model.Edital", "edital")
                         .WithMany("segmentos")
-                        .HasForeignKey("editalid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("editalid");
                 });
 #pragma warning restore 612, 618
         }

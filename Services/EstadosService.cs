@@ -23,6 +23,7 @@ namespace edital.Services
             List<Estado> estados = new List<Estado>();
             //select * from estado
             estados = _context.estado.ToList();
+
             return estados;
         }
 

@@ -18,13 +18,13 @@ namespace edital.Controllers
     {        
         private readonly ICidadesService _cidadeService;
         private readonly IEstadosService _estadoService;
-
-        public CidadesController(ICidadesService cidadeService)
+        public CidadesController(ICidadesService cidadeService, IEstadosService estadoService = null)
         {
             _cidadeService = cidadeService;
+            _estadoService = estadoService;
         }
-        
-        // GET: api/Cidades
+
+        // GET: api/cidades
         [HttpGet]
         public ActionResult<List<Cidade>> GetCidades()
         {
@@ -40,22 +40,22 @@ namespace edital.Controllers
 
         // PUT: api/Cidades/5
         [HttpPut("{id}")]
-       public ActionResult<Cidade> PutCidade(int id, Cidade Cidade)
+       public ActionResult<Cidade> PutCidade(int id, Cidade cidade)
         {
-            if (id != Cidade.id)
+            if (id != cidade.id)
             {
                 return BadRequest();
             }
 
-            bool resp  = _cidadeService.AtualizaCidade(Cidade);
+            bool resp  = _cidadeService.AtualizaCidade(cidade);
             if(!resp)
             {                            
                 return NotFound();
             }
 
-            Cidade = _cidadeService.GetCidade(id);
+            cidade = _cidadeService.GetCidade(id);
 
-            return Cidade;
+            return cidade;
         }
 
         // POST: api/Cidades
@@ -72,11 +72,13 @@ namespace edital.Controllers
                 resp = _cidadeService.CadastrarCidade(cidade);
                 
             }
-            if(novoCidade.estado == null){
+            else if(novoCidade.estado == null){
                 resp = false;
             }
-
-            resp = _cidadeService.CadastrarCidade(novoCidade);
+            else{
+                resp = _cidadeService.CadastrarCidade(novoCidade);
+            }
+            
 
             
             if(resp){
@@ -84,7 +86,7 @@ namespace edital.Controllers
             }
             else{
                 return "Falha ao executar a solicitação!"; 
-            }           
+            }         
         }
 
       /*  // DELETE: api/Cidades/5

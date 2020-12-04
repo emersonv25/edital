@@ -13,7 +13,13 @@ namespace edital.Model
             this.nome = nome;
             this.uf = uf;
             this.flgativo = flgativo;
-            this.cidades = new List<Cidade>();
+        }
+        public Estado(int id, string nome, string uf, bool flgativo)
+        {
+            this.id = id;
+            this.nome = nome;
+            this.uf = uf;
+            this.flgativo = flgativo;
         }
 
         public Estado(string nome, string uf, bool flgativo, List<Cidade> cidades)
@@ -35,11 +41,11 @@ namespace edital.Model
 
         [Key]
         public int id { get; set; }
-        [Required]
+         
         public string nome { get; set; }
-        [Required]
+         
         public string uf { get; set; }
-        [Required]
+         
         public bool flgativo { get; set; }
         List<Cidade> cidades { get; set; }
     }

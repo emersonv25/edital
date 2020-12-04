@@ -7,10 +7,10 @@ namespace edital.Model
     {
         [Key]
         public int id { get; set; }
-        [Required]
+         
         public string segmento { get; set; }
         public string descricao { get; set; }   
-        [Required]     
+              
         public Edital edital { get; set; }
         public List<Inscricao> inscricoes { get; set; }
     }

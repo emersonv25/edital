@@ -20,7 +20,6 @@ namespace edital.Data
         public DbSet<PessoaJuridica> pessoajuridica { get; set; }
         public DbSet<Representante> representante { get; set; }
         public DbSet<Segmento> segmento { get; set; }
-        public DbSet<Anexo> anexo { get; set; }
 
         
         protected override void OnModelCreating(ModelBuilder builder)

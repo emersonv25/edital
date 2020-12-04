@@ -13,6 +13,11 @@ namespace edital.Model
         {
             this.nome = nome;
         }
+        public Cidade(string nome, int estadoid)
+        {
+            this.nome = nome;
+            this.estadoid = estadoid;
+        }
 
         public Cidade(string nome, Estado estado)
         {
@@ -29,11 +34,9 @@ namespace edital.Model
         }
 
         [Key]
-        [Required]
         public int id { get; set; }
-        [Required]
+        public int estadoid { get; set; }
         public string nome { get; set; }
-        [Required]
         public Estado estado {  get; set; }
         public List<Endereco> enderecos { get; set; }
     }
