@@ -17,6 +17,7 @@ namespace edital.Controllers
     public class CidadesController : ControllerBase
     {        
         private readonly ICidadesService _cidadeService;
+        private readonly IEstadosService _estadoService;
 
         public CidadesController(ICidadesService cidadeService)
         {
@@ -61,7 +62,23 @@ namespace edital.Controllers
        [HttpPost]
         public ActionResult<string> PostCidade(Cidade novoCidade)
         {
-            bool resp = _cidadeService.CadastrarCidade(novoCidade);
+            bool resp;
+
+            if(novoCidade.estado.id != 0){
+                Estado estado = _estadoService.GetEstado(novoCidade.estado.id);
+                Cidade cidade = new Cidade();
+                cidade.nome = novoCidade.nome;
+                cidade.estado = estado;
+                resp = _cidadeService.CadastrarCidade(cidade);
+                
+            }
+            if(novoCidade.estado == null){
+                resp = false;
+            }
+
+            resp = _cidadeService.CadastrarCidade(novoCidade);
+
+            
             if(resp){
                 return "Solicitação executada com sucesso!";
             }
