@@ -12,12 +12,12 @@ namespace edital.Migrations
                 name: "contato",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    telefone = table.Column<string>(nullable: true),
-                    email = table.Column<string>(nullable: true),
-                    celular = table.Column<string>(nullable: true),
-                    site = table.Column<string>(nullable: true)
+                    telefone = table.Column<string>(type: "text", nullable: true),
+                    email = table.Column<string>(type: "text", nullable: true),
+                    celular = table.Column<string>(type: "text", nullable: false),
+                    site = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,12 +28,12 @@ namespace edital.Migrations
                 name: "edital",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    nome = table.Column<string>(nullable: true),
-                    datainicio = table.Column<DateTime>(nullable: false),
-                    datafim = table.Column<DateTime>(nullable: true),
-                    vigencia = table.Column<int>(nullable: false)
+                    nome = table.Column<string>(type: "text", nullable: false),
+                    datainicio = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    datafim = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    vigencia = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,11 +44,11 @@ namespace edital.Migrations
                 name: "estado",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    nome = table.Column<string>(nullable: true),
-                    uf = table.Column<string>(nullable: true),
-                    flgativo = table.Column<bool>(nullable: false)
+                    nome = table.Column<string>(type: "text", nullable: false),
+                    uf = table.Column<string>(type: "text", nullable: false),
+                    flgativo = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,11 +59,11 @@ namespace edital.Migrations
                 name: "segmento",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    segmento = table.Column<string>(nullable: true),
-                    descricao = table.Column<string>(nullable: true),
-                    editalid = table.Column<int>(nullable: true)
+                    segmento = table.Column<string>(type: "text", nullable: false),
+                    descricao = table.Column<string>(type: "text", nullable: true),
+                    editalid = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,17 +73,17 @@ namespace edital.Migrations
                         column: x => x.editalid,
                         principalTable: "edital",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "cidade",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    nome = table.Column<string>(nullable: true),
-                    estadoid = table.Column<int>(nullable: true)
+                    nome = table.Column<string>(type: "text", nullable: false),
+                    estadoid = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -100,14 +100,14 @@ namespace edital.Migrations
                 name: "endereco",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    logradouro = table.Column<string>(nullable: true),
-                    bairro = table.Column<string>(nullable: true),
-                    complemento = table.Column<string>(nullable: true),
-                    numero = table.Column<string>(nullable: true),
-                    cep = table.Column<string>(nullable: true),
-                    cidadeid = table.Column<int>(nullable: true)
+                    logradouro = table.Column<string>(type: "text", nullable: false),
+                    bairro = table.Column<string>(type: "text", nullable: false),
+                    complemento = table.Column<string>(type: "text", nullable: true),
+                    numero = table.Column<string>(type: "text", nullable: false),
+                    cep = table.Column<string>(type: "text", nullable: false),
+                    cidadeid = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -117,19 +117,19 @@ namespace edital.Migrations
                         column: x => x.cidadeid,
                         principalTable: "cidade",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "representante",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    nome = table.Column<string>(nullable: true),
-                    cpf = table.Column<string>(nullable: true),
-                    contatoid = table.Column<int>(nullable: true),
-                    enderecoid = table.Column<int>(nullable: true)
+                    nome = table.Column<string>(type: "text", nullable: false),
+                    cpf = table.Column<string>(type: "text", nullable: false),
+                    contatoid = table.Column<int>(type: "integer", nullable: true),
+                    enderecoid = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -152,12 +152,12 @@ namespace edital.Migrations
                 name: "pessoajuridica",
                 columns: table => new
                 {
-                    cnpj = table.Column<int>(nullable: false)
+                    cnpj = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    razaosocial = table.Column<string>(nullable: true),
-                    enderecoid = table.Column<int>(nullable: true),
-                    representanteid = table.Column<int>(nullable: true),
-                    contatoid = table.Column<int>(nullable: true)
+                    razaosocial = table.Column<string>(type: "text", nullable: false),
+                    enderecoid = table.Column<int>(type: "integer", nullable: true),
+                    representanteid = table.Column<int>(type: "integer", nullable: true),
+                    contatoid = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -186,14 +186,14 @@ namespace edital.Migrations
                 name: "inscricao",
                 columns: table => new
                 {
-                    pessoajuridica_id = table.Column<int>(nullable: false),
-                    segmento_id = table.Column<int>(nullable: false),
-                    pessoajuridicacnpj = table.Column<int>(nullable: true),
-                    segmentoid = table.Column<int>(nullable: true),
-                    flgativo = table.Column<bool>(nullable: false),
-                    nomeiniciativa = table.Column<string>(nullable: true),
-                    objetivos = table.Column<string>(nullable: true),
-                    publicoalvo = table.Column<string>(nullable: true)
+                    pessoajuridica_id = table.Column<int>(type: "integer", nullable: false),
+                    segmento_id = table.Column<int>(type: "integer", nullable: false),
+                    pessoajuridicacnpj = table.Column<int>(type: "integer", nullable: true),
+                    segmentoid = table.Column<int>(type: "integer", nullable: false),
+                    flgativo = table.Column<bool>(type: "boolean", nullable: false),
+                    nomeiniciativa = table.Column<string>(type: "text", nullable: true),
+                    objetivos = table.Column<string>(type: "text", nullable: true),
+                    publicoalvo = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -209,7 +209,7 @@ namespace edital.Migrations
                         column: x => x.segmentoid,
                         principalTable: "segmento",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

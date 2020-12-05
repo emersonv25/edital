@@ -20,6 +20,12 @@ namespace edital.Model
             this.estado = estado;
         }
 
+        public Cidade(string nome, Estado estado, List<Endereco> enderecos)
+        {
+            this.nome = nome;
+            this.estado = estado;
+        }
+
         public Cidade(int id, string nome, Estado estado, List<Endereco> enderecos)
         {
             this.id = id;

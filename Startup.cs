@@ -36,6 +36,8 @@ namespace edital
 
             services.AddScoped<IEstadosService, EstadosService>();
             services.AddScoped<ICidadesService, CidadesService>();
+            services.AddScoped<IEnderecosService, EnderecosService>();
+            services.AddScoped<IContatosService, ContatosService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
