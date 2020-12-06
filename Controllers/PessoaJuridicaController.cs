@@ -31,14 +31,14 @@ namespace edital.Controllers
         }
 
         // GET: api/PessoaJuridicas/5
-        [HttpGet("{id}")]
+        [HttpGet("{cnpj}")]
         public ActionResult<PessoaJuridica> GetPessoaJuridica(int cnpj)
         {
            return _pessoajuridicaService.GetPessoaJuridica(cnpj);
         }
 
         // PUT: api/PessoaJuridicas/5
-        [HttpPut("{id}")]
+        [HttpPut("{cnpj}")]
        public ActionResult<PessoaJuridica> PutPessoaJuridica(int cnpj, PessoaJuridica pessoajuridica)
         {
             if (cnpj != pessoajuridica.cnpj)
