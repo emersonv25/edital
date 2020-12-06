@@ -5,7 +5,8 @@ namespace edital.Model
 {
     public class Inscricao 
     {
-         
+        
+        public int id {get; set; }
         public int pessoajuridica_id { get; set; }
 
          

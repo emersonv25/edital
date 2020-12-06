@@ -40,7 +40,7 @@ namespace edital
             services.AddScoped<ISegmentosService, SegmentosService>();
             services.AddScoped<IEditalService, EditalService>();
             services.AddScoped<IRepresentantesService, RepresentantesService>();
-            
+            services.AddScoped<IInscricaosService, InscricaosService>();
 
             
 
