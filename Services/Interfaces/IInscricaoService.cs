@@ -3,12 +3,12 @@ using edital.Model;
 
 namespace edital.Services.Interfaces
 {
-    public interface IInscricaosService
+    public interface IInscricaoService
     {
-        //retorna todos os inscricaos cadastrados
-        List<Inscricao> GetInscricaos(); 
+        //retorna todos os inscricao cadastrados
+        List<Inscricao> GetInscricoes(); 
         //retorna o inscricao que eu passar o id
-        Inscricao GetInscricao(int cnpj);
+        Inscricao GetInscricao(int id);
         //cadastra um novo inscricao na tabela
         bool CadastrarInscricao(Inscricao inscricao);
         //atualiza os dados do inscricao cadastrado

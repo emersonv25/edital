@@ -14,35 +14,36 @@ namespace edital.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InscricaosController : ControllerBase
+    public class InscricaoController : ControllerBase
     {        
-        private readonly IInscricaosService _inscricaoService;
+        private readonly IInscricaoService _inscricaoService;
 
-        public InscricaosController(IInscricaosService inscricaoService)
+        public InscricaoController(IInscricaoService inscricaoService)
         {
             _inscricaoService = inscricaoService;
         }
         
-        // GET: api/Inscricaos
+        // GET: api/Inscricao
         [HttpGet]
-        public ActionResult<List<Inscricao>> GetInscricaos()
+        public ActionResult<List<Inscricao>> GetInscricoes()
         {
-           return _inscricaoService.GetInscricaos();
+           return _inscricaoService.GetInscricoes();
         }
 
-        // GET: api/Inscricaos/5
-        [HttpGet("{id}")]
-        public ActionResult<Inscricao> GetInscricao(int id)
+        // GET: api/Inscricao/5
+        
+        [HttpGet("{cnpj}")]
+        public ActionResult<Inscricao> GetInscricao(int cnpj)
         {
-           return _inscricaoService.GetInscricao(id);
+           return _inscricaoService.GetInscricao(cnpj);
         }
 
-        // PUT: api/Inscricaos/5
-        /*
-        [HttpPut("{id}")]
-       public ActionResult<Inscricao> PutInscricao(int id, Inscricao inscricao)
+        // PUT: api/Inscricao/5
+        
+        [HttpPut("{cnpj}")]
+       public ActionResult<Inscricao> PutInscricao(int cnpj, Inscricao inscricao)
         {
-            if (id != inscricao.id)
+            if (cnpj != inscricao.pessoajuridica.cnpj)
             {
                 return BadRequest();
             }
@@ -53,12 +54,12 @@ namespace edital.Controllers
                 return NotFound();
             }
 
-            inscricao = _inscricaoService.GetInscricao(id);
+            inscricao = _inscricaoService.GetInscricao(cnpj);
 
             return inscricao;
-        }*/
+        }
 
-        // POST: api/Inscricaos
+        // POST: api/Inscricao
        [HttpPost]
         public ActionResult<string> PostInscricao(Inscricao novoInscricao)
         {
@@ -71,7 +72,7 @@ namespace edital.Controllers
             }           
         }
 
-      /*  // DELETE: api/Inscricaos/5
+      /*  // DELETE: api/Inscricao/5
        [HttpDelete("{id}")]
         public ActionResult<Inscricao> DeletePaciente(int id)
         {

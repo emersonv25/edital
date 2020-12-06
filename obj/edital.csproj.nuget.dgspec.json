@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mega\\Desktop\\Nova pasta\\edital\\edital.csproj": {}
+    "E:\\Desenvolvimento\\Git\\edital\\edital.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mega\\Desktop\\Nova pasta\\edital\\edital.csproj": {
+    "E:\\Desenvolvimento\\Git\\edital\\edital.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mega\\Desktop\\Nova pasta\\edital\\edital.csproj",
+        "projectUniqueName": "E:\\Desenvolvimento\\Git\\edital\\edital.csproj",
         "projectName": "edital",
-        "projectPath": "C:\\Users\\Mega\\Desktop\\Nova pasta\\edital\\edital.csproj",
-        "packagesPath": "C:\\Users\\Mega\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mega\\Desktop\\Nova pasta\\edital\\obj\\",
+        "projectPath": "E:\\Desenvolvimento\\Git\\edital\\edital.csproj",
+        "packagesPath": "C:\\Users\\emers\\.nuget\\packages\\",
+        "outputPath": "E:\\Desenvolvimento\\Git\\edital\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Mega\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\emers\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

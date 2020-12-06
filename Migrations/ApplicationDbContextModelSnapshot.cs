@@ -26,11 +26,10 @@ namespace edital.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<int?>("estadoid")
+                    b.Property<int>("estadoid")
                         .HasColumnType("integer");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -48,7 +47,6 @@ namespace edital.Migrations
                         .UseIdentityByDefaultColumn();
 
                     b.Property<string>("celular")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("email")
@@ -79,7 +77,6 @@ namespace edital.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("vigencia")
@@ -98,25 +95,21 @@ namespace edital.Migrations
                         .UseIdentityByDefaultColumn();
 
                     b.Property<string>("bairro")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("cep")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("cidadeid")
+                    b.Property<int?>("cidadeid")
                         .HasColumnType("integer");
 
                     b.Property<string>("complemento")
                         .HasColumnType("text");
 
                     b.Property<string>("logradouro")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("numero")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -137,11 +130,9 @@ namespace edital.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("uf")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -160,6 +151,9 @@ namespace edital.Migrations
                     b.Property<bool>("flgativo")
                         .HasColumnType("boolean");
 
+                    b.Property<int>("id")
+                        .HasColumnType("integer");
+
                     b.Property<string>("nomeiniciativa")
                         .HasColumnType("text");
 
@@ -172,7 +166,7 @@ namespace edital.Migrations
                     b.Property<string>("publicoalvo")
                         .HasColumnType("text");
 
-                    b.Property<int>("segmentoid")
+                    b.Property<int?>("segmentoid")
                         .HasColumnType("integer");
 
                     b.HasKey("pessoajuridica_id", "segmento_id");
@@ -198,7 +192,6 @@ namespace edital.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("razaosocial")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("representanteid")
@@ -226,14 +219,12 @@ namespace edital.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("cpf")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("enderecoid")
                         .HasColumnType("integer");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -255,11 +246,10 @@ namespace edital.Migrations
                     b.Property<string>("descricao")
                         .HasColumnType("text");
 
-                    b.Property<int>("editalid")
+                    b.Property<int?>("editalid")
                         .HasColumnType("integer");
 
                     b.Property<string>("segmento")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -273,7 +263,9 @@ namespace edital.Migrations
                 {
                     b.HasOne("edital.Model.Estado", "estado")
                         .WithMany()
-                        .HasForeignKey("estadoid");
+                        .HasForeignKey("estadoid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("estado");
                 });
@@ -282,9 +274,7 @@ namespace edital.Migrations
                 {
                     b.HasOne("edital.Model.Cidade", "cidade")
                         .WithMany("enderecos")
-                        .HasForeignKey("cidadeid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("cidadeid");
 
                     b.Navigation("cidade");
                 });
@@ -297,9 +287,7 @@ namespace edital.Migrations
 
                     b.HasOne("edital.Model.Segmento", "segmento")
                         .WithMany("inscricoes")
-                        .HasForeignKey("segmentoid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("segmentoid");
 
                     b.Navigation("pessoajuridica");
 
@@ -346,9 +334,7 @@ namespace edital.Migrations
                 {
                     b.HasOne("edital.Model.Edital", "edital")
                         .WithMany("segmentos")
-                        .HasForeignKey("editalid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("editalid");
 
                     b.Navigation("edital");
                 });
