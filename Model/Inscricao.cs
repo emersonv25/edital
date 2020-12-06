@@ -3,11 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace edital.Model
 {
-    public class Inscricao 
+    public class Inscricao  
     {
 
         public Inscricao(){}
-        public Inscricao(int pessoajuridica_id, int segmento_id, PessoaJuridica pessoajuridica, Segmento segmento, bool flgativo, string nomeiniciativa, string objetivos, string publicoalvo){}
+        public Inscricao(int pessoajuridica_id, int segmento_id, PessoaJuridica pessoajuridica, Segmento segmento, bool flgativo, string nomeiniciativa, string objetivos, string publicoalvo){
+            this.pessoajuridica_id = pessoajuridica_id; this.segmento_id = segmento_id; this.pessoajuridica = pessoajuridica; this.segmento = segmento; this.flgativo = flgativo; this.nomeiniciativa = nomeiniciativa; this.objetivos = objetivos; this.publicoalvo = publicoalvo;
+        }
 
         public int pessoajuridica_id { get; set; }
 

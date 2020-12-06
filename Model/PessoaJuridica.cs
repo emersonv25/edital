@@ -12,7 +12,7 @@ namespace edital.Model
             this.razaosocial = razaosocial;
             this.endereco = endereco;
             this.representante = representante;
-            this.contato = contato;
+            this.contato = contato; 
         }
 
         public PessoaJuridica(int cnpj, string razaosocial, Endereco endereco, Representante representante, Contato contato, List<Inscricao> inscricoes){
