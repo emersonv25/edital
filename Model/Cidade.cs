@@ -35,10 +35,12 @@ namespace edital.Model
         }
 
         [Key]
+        [Required]
         public int id { get; set; }
-        public int estadoid { get; set; }
+        [Required]
         public string nome { get; set; }
+        [Required]
         public Estado estado {  get; set; }
-        List<Endereco> enderecos { get; set; }
+        public List<Endereco> enderecos { get; set; }
     }
 }

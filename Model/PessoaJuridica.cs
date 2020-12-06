@@ -28,13 +28,13 @@ namespace edital.Model
 
         [Key]
         public int cnpj { get; set; }
-         
+        [Required]
         public string razaosocial { get; set; }
-         
+        [Required]
         public Endereco endereco { get; set; }
-         
+        [Required]
         public Representante representante { get; set; }
-         
+        [Required]
         public Contato contato { get; set; }
         List<Inscricao> inscricoes { get; set; }
     }

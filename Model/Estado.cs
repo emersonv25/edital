@@ -41,11 +41,11 @@ namespace edital.Model
 
         [Key]
         public int id { get; set; }
-         
+        [Required]
         public string nome { get; set; }
-         
+        [Required]
         public string uf { get; set; }
-         
+        [Required]
         public bool flgativo { get; set; }
         List<Cidade> cidades { get; set; }
     }
