@@ -6,6 +6,9 @@ namespace edital.Model
     public class Inscricao 
     {
 
+        public Inscricao(){}
+        public Inscricao(int pessoajuridica_id, int segmento_id, PessoaJuridica pessoajuridica, Segmento segmento, bool flgativo, string nomeiniciativa, string objetivos, string publicoalvo){}
+
         public int pessoajuridica_id { get; set; }
 
          
