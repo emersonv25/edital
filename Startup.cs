@@ -33,11 +33,16 @@ namespace edital
               options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
-
+            // ADICIONAR O SERVICE E INTERFACE AQUI.
             services.AddScoped<IEstadosService, EstadosService>();
             services.AddScoped<ICidadesService, CidadesService>();
             services.AddScoped<IEnderecosService, EnderecosService>();
-            services.AddScoped<IContatosService, ContatosService>();
+            services.AddScoped<ISegmentosService, SegmentosService>();
+            services.AddScoped<IEditalService, EditalService>();
+            
+
+            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
