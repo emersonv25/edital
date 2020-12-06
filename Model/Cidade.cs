@@ -39,6 +39,6 @@ namespace edital.Model
         public int estadoid { get; set; }
         public string nome { get; set; }
         public Estado estado {  get; set; }
-        public List<Endereco> enderecos { get; set; }
+        List<Endereco> enderecos { get; set; }
     }
 }

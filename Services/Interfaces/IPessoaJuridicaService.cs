@@ -10,9 +10,9 @@ namespace edital.Services.Interfaces
         //retorna o estado que eu passar o id
         PessoaJuridica GetPessoaJuridica(int cnpj);
         //cadastra um novo estado na tabela
-        bool CadastrarPessoaJuridica(PessoaJuridica estado);
+        bool CadastrarPessoaJuridica(PessoaJuridica pessoaJuridica);
         //atualiza os dados do estado cadastrado
-        bool AtualizaPessoaJuridica(PessoaJuridica estado);
+        bool AtualizaPessoaJuridica(PessoaJuridica pessoaJuridica);
         //excluir um estado cadastrado
         bool ExcluirPessoaJuridica(int cnpj);
     }    

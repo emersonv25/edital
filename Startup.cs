@@ -41,6 +41,8 @@ namespace edital
             services.AddScoped<IEditalService, EditalService>();
             services.AddScoped<IRepresentantesService, RepresentantesService>();
             services.AddScoped<IInscricaoService, InscricaoService>();
+            services.AddScoped<IPessoaJuridicaService, PessoaJuridicaService>();
+            services.AddScoped<IContatosService, ContatosService>();
             
 
             

@@ -7,9 +7,20 @@ namespace edital.Model
     {
         public Segmento(){}
 
-        public Segmento(string segmento, string descricao, Edital edital){this.segmento = segmento; this.descricao = descricao; this.edital = edital;}
+        public Segmento(string segmento, string descricao, Edital edital)
+        {
+            this.segmento = segmento;
+             this.descricao = descricao;
+              this.edital = edital;
+        }
 
-        public Segmento(int id, string segmento, string descricao, Edital edital){this.id = id;this.segmento = segmento; this.descricao = descricao; this.edital = edital;}
+        public Segmento(int id, string segmento, string descricao, Edital edital)
+        {
+            this.id = id;
+            this.segmento = segmento;
+            this.descricao = descricao;
+            this.edital = edital;
+        }
 
         public Segmento(int id, string segmento, string descricao, Edital edital, List<Inscricao> inscricoes){
             this.id = id;

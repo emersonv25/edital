@@ -18,7 +18,7 @@ namespace edital.Controllers
     {        
         private readonly ICidadesService _cidadeService;
         private readonly IEstadosService _estadoService;
-        public CidadesController(ICidadesService cidadeService, IEstadosService estadoService = null)
+        public CidadesController(ICidadesService cidadeService, IEstadosService estadoService)
         {
             _cidadeService = cidadeService;
             _estadoService = estadoService;
