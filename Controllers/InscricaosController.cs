@@ -38,6 +38,7 @@ namespace edital.Controllers
         }
 
         // PUT: api/Inscricaos/5
+        /*
         [HttpPut("{id}")]
        public ActionResult<Inscricao> PutInscricao(int id, Inscricao inscricao)
         {
@@ -55,7 +56,7 @@ namespace edital.Controllers
             inscricao = _inscricaoService.GetInscricao(id);
 
             return inscricao;
-        }
+        }*/
 
         // POST: api/Inscricaos
        [HttpPost]
