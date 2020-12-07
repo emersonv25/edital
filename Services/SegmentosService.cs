@@ -22,8 +22,8 @@ namespace edital.Services
         {
             List<Segmento> segmentos = new List<Segmento>();
             //select * from segmento
-            segmentos = _context.segmento.ToList();
-
+           // segmentos = _context.segmento.ToList();
+            segmentos = _context.segmento.Include(s => s.edital).ToList();
             return segmentos;
         }
 
@@ -31,7 +31,11 @@ namespace edital.Services
         public Segmento GetSegmento(int id)
         {
             //select * from segmento where id = ?
-            return _context.segmento.SingleOrDefault(e => e.id == id);          
+            Segmento segmento = new Segmento();
+            segmento = _context.segmento.Include(e => e.edital).SingleOrDefault(s => s.id == id);
+            return segmento;
+            //return _context.segmento.SingleOrDefault(e => e.id == id);     
+
         }
 
         //cadastra um novo segmento na tabela

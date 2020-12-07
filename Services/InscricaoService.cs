@@ -22,7 +22,20 @@ namespace edital.Services
         {
             List<Inscricao> inscricao = new List<Inscricao>();
             //select * from inscricao
-            inscricao = _context.inscricao.ToList();
+            inscricao =  _context.inscricao            
+            .Include(p => p.pessoajuridica)
+            .Include(p => p.pessoajuridica.contato)
+            .Include(p => p.pessoajuridica.endereco)
+            .Include(p => p.pessoajuridica.endereco.cidade)
+            .Include(p => p.pessoajuridica.endereco.cidade.estado)
+            .Include(p => p.pessoajuridica.representante)
+            .Include(p => p.pessoajuridica.representante.contato)
+            .Include(p => p.pessoajuridica.representante.endereco)
+            .Include(p => p.pessoajuridica.representante.endereco.cidade)
+            .Include(p => p.pessoajuridica.representante.endereco.cidade.estado)
+            .Include(s => s.segmento)
+            .Include(s => s.segmento.edital)
+            .ToList();
 
             return inscricao;
         }
@@ -30,8 +43,26 @@ namespace edital.Services
         //retorna o inscricao que eu passar o cnpj
         public Inscricao GetInscricao(int cnpj)
         {
+
             //select * from inscricao where id = ?
-            return _context.inscricao.SingleOrDefault(e => e.pessoajuridica.cnpj == cnpj);          
+            Inscricao inscricao = new Inscricao();
+            inscricao = _context.inscricao
+            .Include(p => p.pessoajuridica)
+            .Include(p => p.pessoajuridica.contato)
+            .Include(p => p.pessoajuridica.endereco)
+            .Include(p => p.pessoajuridica.endereco.cidade)
+            .Include(p => p.pessoajuridica.endereco.cidade.estado)
+            .Include(p => p.pessoajuridica.representante)
+            .Include(p => p.pessoajuridica.representante.contato)
+            .Include(p => p.pessoajuridica.representante.endereco)
+            .Include(p => p.pessoajuridica.representante.endereco.cidade)
+            .Include(p => p.pessoajuridica.representante.endereco.cidade.estado)
+            .Include(s => s.segmento)
+            .Include(s => s.segmento.edital)
+            .SingleOrDefault(e => e.pessoajuridica.cnpj == cnpj);
+
+            //return _context.inscricao.SingleOrDefault(e => e.pessoajuridica.cnpj == cnpj);  
+            return inscricao;        
         }
 
         //cadastra um novo inscricao na tabela

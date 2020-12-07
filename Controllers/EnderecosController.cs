@@ -64,20 +64,23 @@ namespace edital.Controllers
         public ActionResult<string> PostEndereco(Endereco novoEndereco)
         {
             bool resp;
+            /*
             resp = _enderecosService.CadastrarEndereco(novoEndereco);
             if(resp){
                 return "Solicitação executada com sucesso!";
             }
             else{
                 return "Falha ao executar a solicitação!"; 
-            }  
-        /*
+            }  */
+        
+        
             if(novoEndereco.cidade == null){
-                resp = _enderecosService.CadastrarEndereco(novoEndereco);
+                resp = false;
             }
 
             else if (novoEndereco.cidade.id > 0){
                Cidade cidade = _cidadeService.GetCidade(novoEndereco.cidade.id);
+               
                Endereco endereco = new Endereco();
                endereco.logradouro = novoEndereco.logradouro;
                endereco.bairro = novoEndereco.bairro;
@@ -85,7 +88,8 @@ namespace edital.Controllers
                endereco.complemento = novoEndereco.complemento;
                endereco.numero = novoEndereco.numero;
                endereco.cidade = cidade;
-                resp = _enderecosService.CadastrarEndereco(novoEndereco);
+
+                resp = _enderecosService.CadastrarEndereco(endereco);
             }
 
             else{
@@ -99,7 +103,7 @@ namespace edital.Controllers
             else{
                 return "Falha ao executar a solicitação!"; 
             }     
-            */     
+              
         }
 
       /*  // DELETE: api/enderecos/5

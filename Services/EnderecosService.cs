@@ -22,8 +22,8 @@ namespace edital.Services
         {
             List<Endereco> enderecos = new List<Endereco>();
             //select * from Endereco
-            enderecos = _context.endereco.ToList();
-
+            enderecos = _context.endereco.Include(e => e.cidade).Include(es => es.cidade.estado).ToList();
+            //return _context.endereco.ToList();
             return enderecos;
         }
 
@@ -31,13 +31,17 @@ namespace edital.Services
         public Endereco GetEndereco(int id)
         {
             //select * from endereco where id = ?
-            return _context.endereco.SingleOrDefault(e => e.id == id);          
+            Endereco endereco = new Endereco();
+            endereco = _context.endereco.Include(c => c.cidade).Include(es => es.cidade.estado).SingleOrDefault(e => e.id == id);
+            //return _context.endereco.SingleOrDefault(e => e.id == id);    
+            return endereco;      
         }
 
         //cadastra um novo endereco na tabela
         public bool CadastrarEndereco(Endereco endereco)
         {
             bool resp = true;
+                       
             try{
                 //insert into endereco (nome, uf, ativo) values (?, ?, ?)
                 _context.endereco.Add(endereco);

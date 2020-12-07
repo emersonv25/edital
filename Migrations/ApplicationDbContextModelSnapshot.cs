@@ -26,10 +26,11 @@ namespace edital.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<int>("estadoid")
+                    b.Property<int?>("estadoid")
                         .HasColumnType("integer");
 
                     b.Property<string>("nome")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -47,6 +48,7 @@ namespace edital.Migrations
                         .UseIdentityByDefaultColumn();
 
                     b.Property<string>("celular")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("email")
@@ -77,6 +79,7 @@ namespace edital.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("nome")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("vigencia")
@@ -95,9 +98,11 @@ namespace edital.Migrations
                         .UseIdentityByDefaultColumn();
 
                     b.Property<string>("bairro")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("cep")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("cidadeid")
@@ -107,9 +112,11 @@ namespace edital.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("logradouro")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("numero")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -130,9 +137,11 @@ namespace edital.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("nome")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("uf")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -150,9 +159,6 @@ namespace edital.Migrations
 
                     b.Property<bool>("flgativo")
                         .HasColumnType("boolean");
-
-                    b.Property<int>("id")
-                        .HasColumnType("integer");
 
                     b.Property<string>("nomeiniciativa")
                         .HasColumnType("text");
@@ -192,6 +198,7 @@ namespace edital.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("razaosocial")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("representanteid")
@@ -219,12 +226,14 @@ namespace edital.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("cpf")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("enderecoid")
                         .HasColumnType("integer");
 
                     b.Property<string>("nome")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -246,10 +255,11 @@ namespace edital.Migrations
                     b.Property<string>("descricao")
                         .HasColumnType("text");
 
-                    b.Property<int?>("editalid")
+                    b.Property<int>("editalid")
                         .HasColumnType("integer");
 
                     b.Property<string>("segmento")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -263,9 +273,7 @@ namespace edital.Migrations
                 {
                     b.HasOne("edital.Model.Estado", "estado")
                         .WithMany()
-                        .HasForeignKey("estadoid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("estadoid");
 
                     b.Navigation("estado");
                 });
@@ -273,7 +281,7 @@ namespace edital.Migrations
             modelBuilder.Entity("edital.Model.Endereco", b =>
                 {
                     b.HasOne("edital.Model.Cidade", "cidade")
-                        .WithMany("enderecos")
+                        .WithMany()
                         .HasForeignKey("cidadeid");
 
                     b.Navigation("cidade");
@@ -286,7 +294,7 @@ namespace edital.Migrations
                         .HasForeignKey("pessoajuridicacnpj");
 
                     b.HasOne("edital.Model.Segmento", "segmento")
-                        .WithMany("inscricoes")
+                        .WithMany()
                         .HasForeignKey("segmentoid");
 
                     b.Navigation("pessoajuridica");
@@ -334,24 +342,16 @@ namespace edital.Migrations
                 {
                     b.HasOne("edital.Model.Edital", "edital")
                         .WithMany("segmentos")
-                        .HasForeignKey("editalid");
+                        .HasForeignKey("editalid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("edital");
-                });
-
-            modelBuilder.Entity("edital.Model.Cidade", b =>
-                {
-                    b.Navigation("enderecos");
                 });
 
             modelBuilder.Entity("edital.Model.Edital", b =>
                 {
                     b.Navigation("segmentos");
-                });
-
-            modelBuilder.Entity("edital.Model.Segmento", b =>
-                {
-                    b.Navigation("inscricoes");
                 });
 #pragma warning restore 612, 618
         }

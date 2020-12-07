@@ -37,6 +37,6 @@ namespace edital.Model
         public string descricao { get; set; }   
         [Required]     
         public Edital edital { get; set; }
-        public List<Inscricao> inscricoes { get; set; }
+        List<Inscricao> inscricoes { get; set; }
     }
 }

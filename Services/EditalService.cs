@@ -22,7 +22,7 @@ namespace edital.Services
         {
             List<Edital> editais = new List<Edital>();
             //select * from edital
-            editais = _context.edital.ToList();
+            editais = _context.edital.Include(e => e.segmentos).ToList();
 
             return editais;
         }
@@ -31,7 +31,7 @@ namespace edital.Services
         public Edital GetEdital(int id)
         {
             //select * from edital where id = ?
-            return _context.edital.SingleOrDefault(e => e.id == id);          
+            return _context.edital.Include(e => e.segmentos).SingleOrDefault(e => e.id == id);          
         }
 
         //cadastra um novo edital na tabela

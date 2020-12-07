@@ -29,8 +29,13 @@ namespace edital.Services
         //retorna o Cidade que eu passar o id
         public Cidade GetCidade(int id)
         {
+            
             //select * from Cidade where id = ?
-            return _context.cidade.SingleOrDefault(e => e.id == id);          
+            Cidade cidade = new Cidade();
+            cidade = _context.cidade.Include(c => c.estado).SingleOrDefault(e => e.id == id);
+
+            //return _context.cidade.SingleOrDefault(e => e.id == id); 
+            return cidade;      
         }
 
         //cadastra um novo Cidade na tabela

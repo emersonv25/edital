@@ -22,7 +22,17 @@ namespace edital.Services
         {
             List<PessoaJuridica> pessoajuridicas = new List<PessoaJuridica>();
             //select * from pessoajuridica
-            pessoajuridicas = _context.pessoajuridica.ToList();
+            pessoajuridicas = _context.pessoajuridica
+            .Include(e => e.endereco)
+            .Include(e => e.endereco.cidade)
+            .Include(e => e.endereco.cidade.estado)
+            .Include(r => r.representante)
+            .Include(r=> r.representante.contato)
+            .Include(r => r.representante.endereco)
+            .Include(r => r.representante.endereco.cidade)
+            .Include(r => r.representante.endereco.cidade.estado)
+            .Include(c => c.contato)
+            .ToList();
 
             return pessoajuridicas;
         }
@@ -31,7 +41,17 @@ namespace edital.Services
         public PessoaJuridica GetPessoaJuridica(int cnpj)
         {
             //select * from pessoajuridica where id = ?
-            return _context.pessoajuridica.SingleOrDefault(e => e.cnpj == cnpj);          
+            return _context.pessoajuridica            
+            .Include(e => e.endereco)
+            .Include(e => e.endereco.cidade)
+            .Include(e => e.endereco.cidade.estado)
+            .Include(r => r.representante)
+            .Include(r=> r.representante.contato)
+            .Include(r => r.representante.endereco)
+            .Include(r => r.representante.endereco.cidade)
+            .Include(r => r.representante.endereco.cidade.estado)
+            .Include(c => c.contato)
+            .SingleOrDefault(e => e.cnpj == cnpj);          
         }
 
         //cadastra um novo pessoajuridica na tabela
