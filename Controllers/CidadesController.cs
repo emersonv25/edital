@@ -71,6 +71,7 @@ namespace edital.Controllers
             else if(novoCidade.estado.id > 0){
                 Estado estado = _estadoService.GetEstado(novoCidade.estado.id);
                 Cidade cidade = new Cidade();
+                cidade.id = novoCidade.id;
                 cidade.nome = novoCidade.nome;
                 cidade.estado = estado;
                 resp = _cidadeService.CadastrarCidade(cidade);

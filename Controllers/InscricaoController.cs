@@ -155,6 +155,7 @@ namespace edital.Controllers
                 inscricao.objetivos = novoInscricao.objetivos;
                 inscricao.publicoalvo = novoInscricao.publicoalvo;
                 inscricao.flgativo = inscricao.flgativo;
+                
 
 
                 resp = _inscricaoService.CadastrarInscricao(inscricao);
