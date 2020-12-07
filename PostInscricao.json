@@ -1,0 +1,78 @@
+{
+	"flgativo": true,
+	"nomeiniciativa": "Natal Feliz",
+	"objetivos": "Coleta de brinquedos",
+	"publicoalvo": "todos",
+	"segmento" : {
+		"id": 1, 
+		"segmento": "Campanhas", 
+		"descricao": "Campanha",
+		"edital": {
+			"id": 1,
+			"nome": "Edital 2020.2",
+			"datainicio": "2020-11-30T18:00:00",
+			"datafim": "2020-12-31T22:00:00",
+			"vigencia": 1
+		}
+	},
+	"descritivo": "Natal Feliz",
+	"pessoajuridica": {
+	  "cnpj": 12345,
+		"razaosocial": "Empresa1",
+		"nomefantasia": "Empresa1",
+		"inscricaoestadual": "56488",
+		"inscricaomunicipal": "1233",
+		"representante": {
+			"nome": "Luiz A",
+			"cpf": "123456789963",
+			"contato":{
+			"telefone": "79999225577",
+			"celular": "79999852365",
+			"email":"empresa@email.com",
+			"site":"www.empresa.com.br"
+		},
+		"endereco": {
+			"logradouro": "Rua A",
+			"bairro": "Bairro A",
+			"complemento": "Loja 1",
+			"numero": "1A",
+			"cep":"4900000",
+			"cidade": {
+				"id" : 1,
+				"nome": "Aracaju",
+				"estado": {
+					"id": 1,
+					"nome": "Sergipe",
+					"uf": "SE",
+					"flgativo": true
+				}
+			}
+		}		
+		},
+		"contato":{
+			"telefone": "79999225577",
+			"celular": "79999852365",
+			"email":"empresa@email.com",
+			"site":"www.empresa.com.br"
+		},
+		"endereco": {
+			"logradouro": "Rua A",
+			"bairro": "Bairro A",
+			"complemento": "Loja 1",
+			"numero": "1A",
+			"cep":"4900000",
+			"cidade": {
+				"id": 1,
+				"nome": "Aracaju",
+				"estado": {
+					"id": 1,
+					"nome": "Sergipe",
+					"uf": "SE",
+					"flgativo": true
+				}
+			}
+		}
+
+	}
+	
+}
