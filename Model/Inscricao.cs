@@ -20,11 +20,11 @@ namespace edital.Model
         }
 
         
-        public Inscricao(int pessoajuridica_id, int segmento_id, PessoaJuridica pessoajuridica, Segmento segmento, 
+        public Inscricao(int pessoajuridicaid, int segmentoid, PessoaJuridica pessoajuridica, Segmento segmento, 
         bool flgativo, string nomeiniciativa, string objetivos, string publicoalvo)
         {
-        this.pessoajuridica_id = pessoajuridica_id;
-        this.segmento_id = segmento_id;
+        this.pessoajuridicacnpj = pessoajuridicaid;
+        this.segmentoid = segmentoid;
         this.pessoajuridica = pessoajuridica;
         this.segmento = segmento;
         this.flgativo = flgativo;
@@ -33,13 +33,11 @@ namespace edital.Model
         this.publicoalvo = publicoalvo;
         }
 
+        [Key]
+        public int pessoajuridicacnpj{ get; set; }
 
-        
-       
-        public int pessoajuridica_id { get; set; }
-
-      
-        public int segmento_id { get; set; }
+        [Key]
+        public int segmentoid { get; set; }
         [Required]
         public PessoaJuridica pessoajuridica { get; set; }
         [Required]

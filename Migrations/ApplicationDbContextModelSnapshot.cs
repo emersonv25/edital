@@ -151,10 +151,10 @@ namespace edital.Migrations
 
             modelBuilder.Entity("edital.Model.Inscricao", b =>
                 {
-                    b.Property<int>("pessoajuridica_id")
+                    b.Property<int>("pessoajuridicacnpj")
                         .HasColumnType("integer");
 
-                    b.Property<int>("segmento_id")
+                    b.Property<int>("segmentoid")
                         .HasColumnType("integer");
 
                     b.Property<bool>("flgativo")
@@ -166,18 +166,10 @@ namespace edital.Migrations
                     b.Property<string>("objetivos")
                         .HasColumnType("text");
 
-                    b.Property<int?>("pessoajuridicacnpj")
-                        .HasColumnType("integer");
-
                     b.Property<string>("publicoalvo")
                         .HasColumnType("text");
 
-                    b.Property<int?>("segmentoid")
-                        .HasColumnType("integer");
-
-                    b.HasKey("pessoajuridica_id", "segmento_id");
-
-                    b.HasIndex("pessoajuridicacnpj");
+                    b.HasKey("pessoajuridicacnpj", "segmentoid");
 
                     b.HasIndex("segmentoid");
 
@@ -291,11 +283,15 @@ namespace edital.Migrations
                 {
                     b.HasOne("edital.Model.PessoaJuridica", "pessoajuridica")
                         .WithMany()
-                        .HasForeignKey("pessoajuridicacnpj");
+                        .HasForeignKey("pessoajuridicacnpj")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("edital.Model.Segmento", "segmento")
                         .WithMany()
-                        .HasForeignKey("segmentoid");
+                        .HasForeignKey("segmentoid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("pessoajuridica");
 

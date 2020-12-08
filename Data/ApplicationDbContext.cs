@@ -27,7 +27,7 @@ namespace edital.Data
              base.OnModelCreating(builder);
 
              builder.Entity<Inscricao>()
-             .HasKey(i => new { i.pessoajuridica_id, i.segmento_id});
+             .HasKey(i => new { i.pessoajuridicacnpj, i.segmentoid});
             
         }        
     }

@@ -81,11 +81,6 @@ namespace edital.Controllers
         [HttpPost]
         public ActionResult<string> PostInscricao(Inscricao novoInscricao)
         {
-            //O COMANDO EF DATABASE UPDATE ESTA COM ERRO NO MEU PROJETO QUE NÃO CONSEGUIR ARRUMAR, POR ESSA RAZÃO NÃO CONSEGUI ATUALIZAR O BANCO
-            // E TRABALHEI TOTALMENTE COM A PRIMEIRA VERSÃO DO BANCO, POR ISSO PODE HAVER ERROS POR CONTA DO BANCO DE DADOS QUE NÃO FOI POSSIVEL CORRIGIR.
-            // UM ERRO CONHECIDO É AO TENTAR INSERIR UMA SEGUNDA INSCRICÃO, ESSE ERRO ACONTECE POIS NÃO EXISTE UMA CHAVE PRIMARIA NA TABELA INSCRIÇÃO
-            // NÃO TIVE TEMPO DE PENSAR EM UMA SOLUÇÃO PARA ESSE ERRO SEM ATUALIZAR O BANCO
-            
 
             bool resp;
            // resp = _inscricaoService.CadastrarInscricao(novoInscricao);
