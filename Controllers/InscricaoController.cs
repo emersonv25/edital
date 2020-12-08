@@ -115,14 +115,8 @@ namespace edital.Controllers
                 
                 Cidade cidade = _cidadeService.GetCidade(inscricao.pessoajuridica.endereco.cidade.id);
                 if(cidade != null){
-                    Endereco endereco = new Endereco();
-                    endereco.logradouro = inscricao.pessoajuridica.endereco.logradouro;
-                    endereco.bairro = inscricao.pessoajuridica.endereco.bairro;
-                    endereco.cep = inscricao.pessoajuridica.endereco.cep;
-                    endereco.complemento = inscricao.pessoajuridica.endereco.complemento;
-                    endereco.numero = inscricao.pessoajuridica.endereco.numero;
-                    endereco.cidade = cidade;
-                    inscricao.pessoajuridica.endereco = endereco;
+                    inscricao.pessoajuridica.endereco.cidade = cidade;
+
 
                 }else{
                     inscricao.pessoajuridica.endereco.cidade.id = 0;
@@ -137,15 +131,8 @@ namespace edital.Controllers
 
                 Cidade cidadeR = _cidadeService.GetCidade(inscricao.pessoajuridica.representante.endereco.cidade.id);
                 if(cidadeR != null){
-                    
-                    Endereco enderecoR = new Endereco();
-                    enderecoR.logradouro = inscricao.pessoajuridica.representante.endereco.logradouro;
-                    enderecoR.bairro = inscricao.pessoajuridica.representante.endereco.bairro;
-                    enderecoR.cep = inscricao.pessoajuridica.representante.endereco.cep;
-                    enderecoR.complemento = inscricao.pessoajuridica.representante.endereco.complemento;
-                    enderecoR.numero = inscricao.pessoajuridica.representante.endereco.numero;
-                    enderecoR.cidade = cidadeR;
-                    inscricao.pessoajuridica.representante.endereco = enderecoR;
+                    inscricao.pessoajuridica.representante.endereco.cidade = cidadeR;
+
                 }else{
                     inscricao.pessoajuridica.representante.endereco.cidade.id =0;
                 }

@@ -22,7 +22,7 @@ namespace edital.Services
         {
             List<Inscricao> inscricao = new List<Inscricao>();
             //select * from inscricao
-            inscricao =  _context.inscricao            
+            inscricao =  _context.inscricao         
             .Include(p => p.pessoajuridica)
             .Include(p => p.pessoajuridica.contato)
             .Include(p => p.pessoajuridica.endereco)
